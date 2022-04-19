@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.saggu</groupId>
+	<artifactId>sample-maven-project</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.0.0.Final</version>
+			<exclusions>
+				<exclusion>
+					<!-- excluding transitive dependency for hibernate core -->
+					<groupId>org.jboss.logging</groupId>
+					<artifactId>jboss-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<!-- Range of dependencies [v1, v2] => upto max v2 including v2 [v1, v2) 
+				=> upto v2 but not include v2 [v1, ] => latest version after or equal to 
+				v1 [, v2] => < = v2 -->
+			<version>4.13.2</version>
+			<!-- Default scope is compile and runtime scope does not make this jar 
+				available on run time runtime = scope is useful for api testing provided 
+				= do not provided in packaging war etc. test = only available for test code -->
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+			    <!-- Update compiler version from 1.5 (in effective pom) to 1.8 (project pom) -->
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
