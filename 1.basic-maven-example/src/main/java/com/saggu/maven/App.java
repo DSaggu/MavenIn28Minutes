@@ -1,4 +1,4 @@
-package com.in28minutes.maven;
+package com.saggu.maven;
 
 /**
  * Hello world!
